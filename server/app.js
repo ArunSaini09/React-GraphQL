@@ -1,11 +1,13 @@
 const express = require('express');
-const {graphqlHTTP} = require('express-graphql'); 
+const graphqlHTTP = require('express-graphql').graphqlHTTP; 
 const schema = require('./schema/schema');
+
 const app = express();
 
-//the graphql route that will be passed to the graphqlHTTP object
+//on the graphql endpoint, run the graphqlHTTP middleware
 app.use('/graphql', graphqlHTTP({
-    schema
+    schema:schema,
+    graphiql:true
 }));
 
 
